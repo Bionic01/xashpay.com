@@ -1,173 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XASH PAY</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="images/xash_fav.png" type="image/gif" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
-      crossorigin="anonymous"
-      
-    />
-  </head>
-  <body>
-    <!-- Navbar Section -->
-    <nav class="navbar">
-      <div class="navbar__container">
-        <a href="#home" id="navbar__logo"><img src="images/xashpay.png" alt="XASH PAY" /></a>
-        <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span> <span class="bar"></span>
-          <span class="bar"></span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XashPay - Seamless Bill Payments</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xashDark: '#121212',
+                        xashPink: '#FF3366',
+                        xashPurple: '#7928CA',
+                        xashBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-xashDark text-white font-sans">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 bg-xashDark/90 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold bg-gradient-to-r from-xashPink to-xashPurple text-transparent bg-clip-text">XashPay</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-xashPink transition-colors">Home</a>
+                <a href="#about" class="hover:text-xashPink transition-colors">About</a>
+                <a href="#services" class="hover:text-xashPink transition-colors">Services</a>
+                <a href="#partners" class="hover:text-xashPink transition-colors">Partners</a>
+                <a href="#signup" class="hover:text-xashPink transition-colors">Sign Up</a>
+                <a href="#contact" class="hover:text-xashPink transition-colors">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="#home" class="navbar__links" id="home-page">Home</a>
-          </li>
-          <li class="navbar__item">
-            <a href="#about" class="navbar__links" id="about-page">About</a>
-          </li>
-          <li class="navbar__item">
-            <a href="#services" class="navbar__links" id="services-page"
-              >Services</a
-            >
-          </li>
-          <li class="navbar__btn">
-            <a href="#sign-up" class="button" id="signup">Sign Up</a>
-          </li>
-        </ul>
-      </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-xashDark/95 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="hover:text-xashPink transition-colors">Home</a>
+                <a href="#about" class="hover:text-xashPink transition-colors">About</a>
+                <a href="#services" class="hover:text-xashPink transition-colors">Services</a>
+                <a href="#partners" class="hover:text-xashPink transition-colors">Partners</a>
+                <a href="#signup" class="hover:text-xashPink transition-colors">Sign Up</a>
+                <a href="#contact" class="hover:text-xashPink transition-colors">Contact</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero" id="home">
-      <div class="hero__container">
-        <h1 class="hero__heading">Seamless bill <span>Payments</span></h1>
-        <p class="hero__description">Buy or Sell <span>International</span> Airtime - Data - Electricity - Vouchers and a lot more via Whatsapp </p>
-        <button class="main__btn"><a href="https://api.whatsapp.com/send?phone=27655971539&text=Hi">OPEN <i class="fab fa-whatsapp"></i
-          > WHATSAPP</a></button>
-      </div>
-    </div>
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Seamless bill Payments</h1>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-gray-300">Buy or Sell International Airtime – Data – Electricity – Vouchers and a lot more via WhatsApp</p>
+            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
+                <i class="fab fa-whatsapp mr-2"></i> Open WhatsApp
+            </a>
+        </div>
+    </section>
 
     <!-- About Section -->
-    <div class="main" id="about">
-      <div class="main__container">
-        <div class="main__img--container">
-          <div class="main__img--card"> <i class="fas fa-layer-group"></i></div>
+    <section id="about" class="py-20 bg-black/30">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12">What is XashPay?</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-12 text-gray-300">A WhatsApp‐Based bill Payment Service. Individuals & businesses can conveniently buy and sell anything from our vast range of virtual essentials and vouchers.</p>
+            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
+                <i class="fab fa-whatsapp mr-2"></i> Buy on WhatsApp
+            </a>
         </div>
-        <div class="main__content">
-          <h1>What is XASHPAY?</h1>
-          <h2>A Whatsapp-Based bill Payment Service </h2>
-          <p>Individuals & businesses can conveniently buy and sell anything from  our vast range of virtual essentials and vouchers. </p>
-          <button class="main__btn"><a href="https://api.whatsapp.com/send?phone=27655971539&text=Hi">BUY ON <i class="fab fa-whatsapp"></i
-            > WHATSAPP</a></button>
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- Services Section -->
-    <div class="services" id="services">
-      <h1>Our Services</h1>
-      <div class="services__wrapper">
-        <div class="services__card">
-          <h2>Airtime & Data</h2>
-          <p>Instantly topup any phone number anytime. </p>
-          <div class="services__btn"><button>Get Started</button></div>
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Airtime & Data</h3>
+                    <p class="mb-6 text-gray-300">Instantly top up any phone number anytime.</p>
+                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Electricity</h3>
+                    <p class="mb-6 text-gray-300">Electricity is a basic need, XashPay got your back.</p>
+                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                        <i class="fas fa-file-invoice-dollar text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Pay Bills</h3>
+                    <p class="mb-6 text-gray-300">DSTV, Water bill, Insurance, Wifi, School Fees.</p>
+                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                        <i class="fas fa-ticket-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Vouchers</h3>
+                    <p class="mb-6 text-gray-300">Taura Airtime, Wifi, OTT, and a lot more.</p>
+                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
+                        Get Started
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="services__card">
-          <h2>Electricity</h2>
-          <p>Electricity is a basic need, XashPay got your back. </p>
-          <div class="services__btn"><button>Get Started</button></div>
-        </div>
-        <div class="services__card">
-          <h2>Pay Bills</h2>
-          <p>DSTV, Water bill, Insurance, Wifi, School Fees </p>
-          <div class="services__btn"><button>Get Started</button></div>
-        </div>
-        <div class="services__card">
-          <h2>Vouchers</h2>
-          <p>Taura Airtime, Wifi, OTT and a lot more.</p>
-          <div class="services__btn"><button>Get Started</button></div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Features Section -->
-    <div class="main" id="sign-up">
-      <div class="main__container">
-        <div class="main__content">
-          <h1>SIMPLE SAFE <i class="fas fa-bolt"></i>FAST</h1>
-          <h2>Sign Up Today</h2>
-          <p>Save money, save time with XashPay. Be number 1 in your community start selling foreign countries virtual services.</p>
-          <button class="main__btn"><a href="https://api.whatsapp.com/send?phone=27655971539&text=Hi">Get Started <i class="fab fa-whatsapp"></i
-            ></a></button>
+    <!-- Partners Section -->
+    <section id="partners" class="py-20 bg-black/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center">Our Partners</h2>
+            
+            <!-- Partners Carousel -->
+            <div class="partners-carousel overflow-hidden mb-12">
+                <div class="partners-track flex items-center">
+                    <!-- Partner logos will be dynamically added via JavaScript -->
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="mailto:support@xashpay.com" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
+                    <i class="fas fa-handshake mr-2"></i> Become a partner
+                </a>
+            </div>
         </div>
-        <div class="main__img--container">
-          <div class="main__img--card" id="card-2">
-            <i class="fas fa-users"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Footer Section -->
-    <div class="footer__container">
-      <div class="footer__links">
-        <div class="footer__link--wrapper">
-          <div class="footer__link--items">
-            <h2>Quick Links</h2>
-            <a href="/sign__up">How it works</a> <a href="/">API Docs</a>
-            <a href="/">Privacy Policy</a> <a href="/">Terms of Service</a>
-          </div>
-          <div class="footer__link--items">
-            <h2>Contact Us</h2>
-            <a href="https://api.whatsapp.com/send?phone=27671656175">Whatsapp</a> <a href="mailto:info@xashpay.com">Email</a>
-            <a href="/"></a>
-          </div>
+    <!-- CTA Section -->
+    <section id="signup" class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">SIMPLE • SAFE • FAST</h2>
+            <h3 class="text-4xl font-bold mb-8">Sign Up Today</h3>
+            <p class="text-xl max-w-3xl mx-auto mb-12 text-gray-300">Save money, save time with XashPay. Be number 1 in your community—start selling foreign countries' virtual services.</p>
+            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
+                <i class="fas fa-rocket mr-2"></i> Get Started
+            </a>
         </div>
-        <div class="footer__link--wrapper">
-          <div class="footer__link--items">
-            <h2>Videos</h2>
-            <a href="/">How To</a> <a href="/">Testimonials</a>
-            <a href="/"></a>
-          </div>
-          <div class="footer__link--items">
-            <h2>Social Media</h2>
-            <a href="https://www.instagram.com/xashpay/">Instagram</a> <a href="https://www.facebook.com/XashPay/">Facebook</a>
-            <a href="https://www.linkedin.com/company/xashpay/">Linkedin</a> <a href="https://twitter.com/XashPay/">Twitter</a>
-          </div>
-        </div>
-      </div>
-      <section class="social__media">
-        <div class="social__media--wrap">
-          <div class="footer__logo">
-            <a href="/" id="footer__logo">XASHPAY</a>
-          </div>
-          <p class="website__rights">© XASHPAY 2022. All rights reserved</p>
-          <div class="social__icons">
-            <a href="https://www.facebook.com/XashPay" class="social__icon--link" target="_blank"
-              ><i class="fab fa-facebook"></i
-            ></a>
-            <a href="https://www.instagram.com/xashpay/" class="social__icon--link"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="https://api.whatsapp.com/send?phone=27655971539&text=Hi" class="social__icon--link"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
-            <a href="https://www.linkedin.com/company/xashpay" class="social__icon--link"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="https://twitter.com/XashPay" class="social__icon--link"
-              ><i class="fab fa-twitter"></i
-            ></a>
-          </div>
-        </div>
-      </section>
-    </div>
+    </section>
 
-    <script src="app.js"></script>
-  </body>
+    <!-- Footer -->
+    <footer id="contact" class="py-16 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Column 1 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">How it works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">API Docs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li><a href="whatsapp://send?phone=+1234567890" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a></li>
+                        <li><a href="mailto:support@xashpay.com" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fas fa-envelope mr-2"></i>Email</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Videos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">How To</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Social Media</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-gray-500 pt-8 border-t border-gray-800">
+                <p>© XASHPAY 2022. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
 </html>
