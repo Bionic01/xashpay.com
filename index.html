@@ -1,142 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XashPay - Seamless Bill Payments</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         xashDark: '#121212',
-                        xashPink: '#FF3366',
-                        xashPurple: '#7928CA',
-                        xashBlue: '#2563EB',
+                        xashPink: '#FF2D55',
+                        xashPurple: '#5E17EB',
+                        xashBlue: '#007AFF',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                        sans: ['SF Pro Display', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF2D55, #5E17EB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(90deg, #FF2D55, #5E17EB);
+        }
+
+        .partners-carousel {
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 7)); }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #FF2D55, #5E17EB);
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body class="bg-xashDark text-white font-sans">
+<body class="bg-xashDark text-white">
     <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 bg-xashDark/90 backdrop-blur-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold bg-gradient-to-r from-xashPink to-xashPurple text-transparent bg-clip-text">XashPay</a>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="hover:text-xashPink transition-colors">Home</a>
-                <a href="#about" class="hover:text-xashPink transition-colors">About</a>
-                <a href="#services" class="hover:text-xashPink transition-colors">Services</a>
-                <a href="#partners" class="hover:text-xashPink transition-colors">Partners</a>
-                <a href="#signup" class="hover:text-xashPink transition-colors">Sign Up</a>
-                <a href="#contact" class="hover:text-xashPink transition-colors">Contact</a>
+    <nav id="navbar" class="fixed w-full z-50 bg-xashDark/90 backdrop-blur-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold">
+                    <span class="gradient-text">Xash</span>Pay
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-xashPink transition duration-300">Home</a>
+                    <a href="#about" class="nav-link hover:text-xashPink transition duration-300">About</a>
+                    <a href="#services" class="nav-link hover:text-xashPink transition duration-300">Services</a>
+                    <a href="#partners" class="nav-link hover:text-xashPink transition duration-300">Partners</a>
+                    <a href="#signup" class="nav-link hover:text-xashPink transition duration-300">Sign Up</a>
+                    <a href="#contact" class="nav-link hover:text-xashPink transition duration-300">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden bg-xashDark/95 backdrop-blur-sm">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
-                <a href="#home" class="hover:text-xashPink transition-colors">Home</a>
-                <a href="#about" class="hover:text-xashPink transition-colors">About</a>
-                <a href="#services" class="hover:text-xashPink transition-colors">Services</a>
-                <a href="#partners" class="hover:text-xashPink transition-colors">Partners</a>
-                <a href="#signup" class="hover:text-xashPink transition-colors">Sign Up</a>
-                <a href="#contact" class="hover:text-xashPink transition-colors">Contact</a>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link hover:text-xashPink transition duration-300">Home</a>
+                    <a href="#about" class="nav-link hover:text-xashPink transition duration-300">About</a>
+                    <a href="#services" class="nav-link hover:text-xashPink transition duration-300">Services</a>
+                    <a href="#partners" class="nav-link hover:text-xashPink transition duration-300">Partners</a>
+                    <a href="#signup" class="nav-link hover:text-xashPink transition duration-300">Sign Up</a>
+                    <a href="#contact" class="nav-link hover:text-xashPink transition duration-300">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Seamless bill Payments</h1>
-            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-gray-300">Buy or Sell International Airtime – Data – Electricity – Vouchers and a lot more via WhatsApp</p>
-            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
-                <i class="fab fa-whatsapp mr-2"></i> Open WhatsApp
-            </a>
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Seamless <span class="gradient-text">Bill Payments</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-lg">
+                        Buy or Sell International Airtime – Data – Electricity – Vouchers and a lot more via WhatsApp
+                    </p>
+                    <a href="https://wa.me/message/YOUR_WHATSAPP_ID" target="_blank" class="inline-flex items-center px-8 py-4 rounded-full gradient-bg text-white font-semibold text-lg transition transform hover:scale-105 shadow-lg">
+                        <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                        Open WhatsApp
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="XashPay Mobile Experience" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-black/30">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-12">What is XashPay?</h2>
-            <p class="text-xl max-w-3xl mx-auto mb-12 text-gray-300">A WhatsApp‐Based bill Payment Service. Individuals & businesses can conveniently buy and sell anything from our vast range of virtual essentials and vouchers.</p>
-            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
-                <i class="fab fa-whatsapp mr-2"></i> Buy on WhatsApp
-            </a>
+    <section id="about" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8">What is <span class="gradient-text">XashPay</span>?</h2>
+                <p class="text-xl text-gray-300 mb-10 leading-relaxed">
+                    A WhatsApp-Based bill Payment Service. Individuals & businesses can conveniently buy and sell anything from our vast range of virtual essentials and vouchers.
+                </p>
+                <a href="https://wa.me/message/YOUR_WHATSAPP_ID" target="_blank" class="inline-flex items-center px-8 py-4 rounded-full gradient-bg text-white font-semibold text-lg transition transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                    Buy on WhatsApp
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">Our Services</h2>
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Our <span class="gradient-text">Services</span></h2>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
-                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                <div class="bg-black/50 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg hover:shadow-xashPink/20 transition duration-300">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-6">
                         <i class="fas fa-mobile-alt text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Airtime & Data</h3>
-                    <p class="mb-6 text-gray-300">Instantly top up any phone number anytime.</p>
-                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
-                        Get Started
+                    <h3 class="text-2xl font-bold mb-3">Airtime & Data</h3>
+                    <p class="text-gray-300 mb-6">Instantly top up any phone number anytime.</p>
+                    <a href="https://wa.me/message/YOUR_WHATSAPP_ID" class="inline-block text-xashPink font-semibold hover:underline">
+                        Get Started <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
-                
+
                 <!-- Service 2 -->
-                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
-                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                <div class="bg-black/50 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg hover:shadow-xashPink/20 transition duration-300">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-6">
                         <i class="fas fa-bolt text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Electricity</h3>
-                    <p class="mb-6 text-gray-300">Electricity is a basic need, XashPay got your back.</p>
-                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
-                        Get Started
+                    <h3 class="text-2xl font-bold mb-3">Electricity</h3>
+                    <p class="text-gray-300 mb-6">Electricity is a basic need, XashPay got your back.</p>
+                    <a href="https://wa.me/message/YOUR_WHATSAPP_ID" class="inline-block text-xashPink font-semibold hover:underline">
+                        Get Started <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
-                
+
                 <!-- Service 3 -->
-                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
-                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                <div class="bg-black/50 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg hover:shadow-xashPink/20 transition duration-300">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-6">
                         <i class="fas fa-file-invoice-dollar text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Pay Bills</h3>
-                    <p class="mb-6 text-gray-300">DSTV, Water bill, Insurance, Wifi, School Fees.</p>
-                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
-                        Get Started
+                    <h3 class="text-2xl font-bold mb-3">Pay Bills</h3>
+                    <p class="text-gray-300 mb-6">DSTV, Water bill, Insurance, Wifi, School Fees.</p>
+                    <a href="https://wa.me/message/YOUR_WHATSAPP_ID" class="inline-block text-xashPink font-semibold hover:underline">
+                        Get Started <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
-                
+
                 <!-- Service 4 -->
-                <div class="bg-black/30 rounded-xl p-8 text-center hover:transform hover:scale-105 transition-transform">
-                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-xashPink to-xashPurple">
+                <div class="bg-black/50 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg hover:shadow-xashPink/20 transition duration-300">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-6">
                         <i class="fas fa-ticket-alt text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Vouchers</h3>
-                    <p class="mb-6 text-gray-300">Taura Airtime, Wifi, OTT, and a lot more.</p>
-                    <a href="whatsapp://send?phone=+1234567890" class="inline-block px-6 py-2 rounded-full border border-xashPink text-xashPink hover:bg-xashPink hover:text-white transition-colors">
-                        Get Started
+                    <h3 class="text-2xl font-bold mb-3">Vouchers</h3>
+                    <p class="text-gray-300 mb-6">Taura Airtime, Wifi, OTT, and a lot more.</p>
+                    <a href="https://wa.me/message/YOUR_WHATSAPP_ID" class="inline-block text-xashPink font-semibold hover:underline">
+                        Get Started <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
             </div>
@@ -144,89 +203,210 @@
     </section>
 
     <!-- Partners Section -->
-    <section id="partners" class="py-20 bg-black/30">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">Our Partners</h2>
-            
-            <!-- Partners Carousel -->
-            <div class="partners-carousel overflow-hidden mb-12">
-                <div class="partners-track flex items-center">
-                    <!-- Partner logos will be dynamically added via JavaScript -->
+    <section id="partners" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Our <span class="gradient-text">Partners</span></h2>
+
+            <div class="relative overflow-hidden w-full my-12">
+                <div class="partners-carousel flex space-x-8">
+                    <!-- Partner logos - duplicated to create seamless loop -->
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">DSTV</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Telcom</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">ZESA</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Econet</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">NetOne</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Telecel</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Vodacom</span>
+                    </div>
+
+                    <!-- Duplicate logos for seamless loop -->
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">DSTV</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounde-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Telcom</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">ZESA</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Econet</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">NetOne</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Telecel</span>
+                    </div>
+                    <div class="flex-shrink-0 w-48 h-24 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl font-bold text-gray-300">Vodacom</span>
+                    </div>
                 </div>
+
+                <!-- Gradient overlay for smooth fade effect -->
+                <div class="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-black to-transparent"></div>
+                <div class="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-black to-transparent"></div>
             </div>
-            
-            <div class="text-center">
-                <a href="mailto:support@xashpay.com" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
-                    <i class="fas fa-handshake mr-2"></i> Become a partner
+
+            <div class="text-center mt-12">
+                <a href="mailto:support@xashpay.com" class="inline-flex items-center px-8 py-3 border-2 border-xashPink text-xashPink rounded-full font-semibold hover:bg-xashPink hover:text-white transition duration-300">
+                    <i class="fas fa-handshake mr-2"></i>
+                    Become a partner
                 </a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section id="signup" class="py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">SIMPLE • SAFE • FAST</h2>
-            <h3 class="text-4xl font-bold mb-8">Sign Up Today</h3>
-            <p class="text-xl max-w-3xl mx-auto mb-12 text-gray-300">Save money, save time with XashPay. Be number 1 in your community—start selling foreign countries' virtual services.</p>
-            <a href="whatsapp://send?phone=+1234567890" class="inline-block px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-xashPink to-xashPurple hover:opacity-90 transition-opacity">
-                <i class="fas fa-rocket mr-2"></i> Get Started
-            </a>
+    <section id="signup" class="py-20 bg-gradient-to-br from-black to-xashDark">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-xl font-semibold mb-4 tracking-widest">SIMPLE • SAFE • FAST</h3>
+                <h2 class="text-4xl font-bold mb-6">Sign Up <span class="gradient-text">Today</span></h2>
+                <p class="text-xl text-gray-300 mb-10">
+                    Save money, save time with XashPay. Be number 1 in your community—start selling foreign countries' virtual services.
+                </p>
+                <a href="https://wa.me/message/YOUR_WHATSAPP_ID" target="_blank" class="inline-flex items-center px-10 py-5 rounded-full gradient-bg text-white font-semibold text-lg transition transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                    Get Started
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="py-16 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer id="contact" class="pt-20 pb-10 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                 <!-- Column 1 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">How it works</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">API Docs</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Terms of Service</a></li>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">How it works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">API Docs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">Terms of Service</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Column 2 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Contact Us</h4>
-                    <ul class="space-y-2">
-                        <li><a href="whatsapp://send?phone=+1234567890" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a></li>
-                        <li><a href="mailto:support@xashpay.com" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fas fa-envelope mr-2"></i>Email</a></li>
+                    <h3 class="text-xl font-bold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://wa.me/message/YOUR_WHATSAPP_ID" class="text-gray-400 hover:text-xashPink transition flex items-center">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:support@xashpay.com" class="text-gray-400 hover:text-xashPink transition flex items-center">
+                                <i class="far fa-envelope mr-2"></i> Email
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <!-- Column 3 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Videos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">How To</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition-colors">Testimonials</a></li>
+                    <h3 class="text-xl font-bold mb-6">Videos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">How To</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-xashPink transition">Testimonials</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Column 4 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Social Media</h4>
+                    <h3 class="text-xl font-bold mb-6">Social Media</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-xashPink transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xashPink transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xashPink transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xashPink transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xashPink transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center text-gray-500 pt-8 border-t border-gray-800">
+
+            <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-400">
                 <p>© XASHPAY 2022. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+
+            // Change icon based on menu state
+            const icon = menuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+
+                // Get the target section
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                // Scroll to target section
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Update URL without adding hash
+                history.pushState(null, null, targetId);
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
 </body>
 </html>
